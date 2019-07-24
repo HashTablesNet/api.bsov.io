@@ -4,10 +4,7 @@ Forked from <https://github.com/rockmtn/stats-api-0xbtc>
 
 This stats API produces output compatible with Toast's output.
 
-This code was extracted from the stats API at <https://0xBTC.info>. You can
-read more about what the statistics mean here:
-
-<https://0xbtc.info/api>
+Made for  <https://api.bsov.info
 
 ## Using with other mineables
 
