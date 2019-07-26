@@ -70,7 +70,7 @@ class StatsApiThread < Thread
     dec_units  = 10**s[:decimals]
 
     stats = {
-      apiVersion:                         "1.01",
+      apiVersion:                         "1.05",
       name:                               s[:name],
       symbol:                             s[:symbol],
       contractUrl:                        "https://etherscan.io/address/#{CONTRACT_ADDR}",
@@ -89,7 +89,7 @@ class StatsApiThread < Thread
       circulatingSupply:                  (s[:tokensMinted] / dec_units.to_f).to_i,
       totalSupply:                        (s[:totalSupply] / dec_units.to_f).to_f,
       lastRewardTo:                       "0x%040x" % s[:lastRewardTo].to_i(16),
-      lastRewardAmount:                   s[:lastRewardAmount],
+      lastRewardAmount:                   (s[:lastRewardAmount] / dec_units.to_f).to_f,
       lastRewardEthBlockNumber:           s[:lrebn],
       currentEthBlock:                    s[:currentEthBlock],
       ethBlocksSinceLastDifficultyPeriod: ebsldp,
