@@ -14,8 +14,24 @@ stats_api_thread = StatsApiThread.new(
   on_change:  Proc.new { |stats| $stats_json = stats.to_json }
 )
 
+get "/" do
+  content_type :json
+  response.headers["Access-Control-Allow-Origin"] = "*"
+  $stats_json
+end
+
 get "/stats.json" do
   content_type :json
   response.headers["Access-Control-Allow-Origin"] = "*"
   $stats_json
+end
+
+get "/key/:i" do
+  content_type :json
+  response.headers["Access-Control-Allow-Origin"] = "*"
+
+  res = JSON.parse($stats_json)
+  if $stats_json.include?(params[:i])
+    res[params[:i]].to_s
+  end
 end
